@@ -16,6 +16,9 @@ const UserSchema = new Schema(
             type: String,
             required: true,
         },
+        resetLink: {
+            type: String,
+        },
     },
     {
         timestamps: true,

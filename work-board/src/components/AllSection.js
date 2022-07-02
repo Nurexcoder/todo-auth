@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import TodoSection from "./TodoSection";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 import {
     Avatar,
     Button,
     Divider,
-    
     IconButton,
     Input,
     InputAdornment,
@@ -18,7 +18,7 @@ import {
     TextField,
     Tooltip,
 } from "@mui/material";
-import { Add,  Logout, Search } from "@mui/icons-material";
+import { Add, Logout, Search } from "@mui/icons-material";
 import AddTodo from "./AddTodo";
 import { baseApi } from "../config";
 
@@ -63,10 +63,10 @@ const SeachBar = styled(OutlinedInput)`
     /* padding: 0 !important; */
 `;
 const AllSection = () => {
+    const navigator = useNavigate();
     const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
     const [todos, setTodos] = useState([]);
     const [filtered, setFiltered] = useState([]);
-
     const [quary, setQuary] = useState("");
 
     const [open, setOpen] = useState(false);
@@ -83,7 +83,7 @@ const AllSection = () => {
     const handleCloseAnc = () => {
         setAnchorEl(null);
     };
-  
+
     useEffect(() => {
         const getTodos = async () => {
             const user = JSON.parse(localStorage.getItem("user"));
@@ -97,7 +97,7 @@ const AllSection = () => {
                 }
             );
             setTodos(res.data);
-            setFiltered(res.data)
+            setFiltered(res.data);
         };
         getTodos();
     }, [isChanged]);
@@ -210,15 +210,15 @@ const AllSection = () => {
                         horizontal: "right",
                         vertical: "bottom",
                     }}>
-                 
                     <MenuItem>
                         <Avatar /> My account
                     </MenuItem>
                     <Divider />
-                   
+
                     <MenuItem
                         onClick={() => {
                             localStorage.clear();
+
                             navigator("/login");
                         }}>
                         <ListItemIcon>
@@ -235,7 +235,6 @@ const AllSection = () => {
                     isChanged={isChanged}
                     setIsChanged={setIsChanged}
                 />
-             
             </Sections>
         </Component>
     );

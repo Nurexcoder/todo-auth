@@ -24,7 +24,11 @@ function App() {
                 <Route path='/home' element={<AllSection />} />
                 <Route path='/login' element={<Login />} />
                 <Route path='/signup' element={<Signup />} />
-                <Route path="/" exact element={<Navigate to={user?'/home':'login'}/>}/>
+                <Route
+                    path='/'
+                    exact
+                    element={<Navigate to={user ? "/home" : "/login"} />}
+                />
             </Routes>
         </Component>
     );

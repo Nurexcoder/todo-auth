@@ -122,7 +122,8 @@ const Signup = () => {
                 );
             }
         } catch (error) {
-            if (error.status === 400) {
+            console.log(error)
+            if (error.response.status === 400) {
                 Swal.fire(
                     "User exist",
                     "Email already exist please use another",
@@ -130,7 +131,7 @@ const Signup = () => {
                 );
                 return;
             }
-            Swal.fire("Error", "Something went wrong", "error");
+            // Swal.fire("Error", "Something went wrong", "error");
         }
     };
     return (

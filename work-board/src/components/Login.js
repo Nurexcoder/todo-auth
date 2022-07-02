@@ -111,20 +111,22 @@ const Login = () => {
             }
             if (res.status === 400) {
                 Swal.fire(
-                    "Incoorect  password",
-                    "Incoorect  password",
+                    "Incoorect",
+                    "Incoorect  password or Username",
                     "waning"
                 );
             }
         } catch (error) {
-            // if (error.status === 400) {
-            //     Swal.fire(
-            //         "User exist",
-            //         "Email already exist please use another",
-            //         "waning"
-            //     );
-            //     return;
-            // }
+            console.log(error)
+            console.log(error)
+            if (error.response.status === 400) {
+                Swal.fire(
+                    "Incoorect  ",
+                    "Incoorect  password or Username",
+                    "error"
+                );
+                return;
+            }
             console.log(error);
             Swal.fire("Error", "Something went wrong", "error");
         }
